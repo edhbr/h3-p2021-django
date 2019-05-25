@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import django_heroku
 import dj_database_url
+import cloudinary
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
 
     'compressor',
     'static_precompiler',
+    'cloudinary',
 
     'blog',
 ]
@@ -155,14 +157,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_PRECOMPILER_OUTPUT_DIR = 'dist'
 
-# STATIC_PRECOMPILER_COMPILERS = (
-#     (
-#         'static_precompiler.compilers.Stylus',
-#         {
-#             "executable": "stylus", "sourcemap_enabled": True
-#         }
-#     ),
-# )
+STATIC_PRECOMPILER_COMPILERS = (
+    (
+        'static_precompiler.compilers.Stylus',
+        {
+            "executable": "stylus", "sourcemap_enabled": True
+        }
+    ),
+)
 
 COMPRESS_ENABLED = True
 COMPRESS_OUTPUT_DIR = 'dist'
@@ -170,3 +172,10 @@ COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',
                         'compressor.filters.cssmin.CSSMinFilter']
 
 django_heroku.settings(locals())
+
+# Cloudinary
+cloudinary.config(
+    cloud_name=config("CL_NAME"),
+    api_key=config("CL_KEY"),
+    api_secret=config("CL_SECRET")
+)

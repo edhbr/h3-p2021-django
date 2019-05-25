@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -8,7 +9,7 @@ class Post(models.Model):
     published_date = models.DateField("date published")
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
-    featured_image = models.ImageField()
+    featured_image = CloudinaryField("featured image")
     lead = models.TextField()
     body = models.TextField()
 

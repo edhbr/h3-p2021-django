@@ -1,4 +1,7 @@
-{% extends 'base.html' %} {% load markdown_extras %} {% block page_content %}
+{% extends 'base.html' %}
+{% load cloudinary %}
+{% load markdown_extras %}
+{% block page_content %}
 <div class="blog">
   <div class="hero">
     <a class="back" href="{% url 'blog:index' %}" title="Back to home">
@@ -8,7 +11,7 @@
     </a>
     <img
       class="featured"
-      src="{{ data.featured_image }}"
+      src="{% cloudinary_url data.featured_image %}"
       alt="{{ data.title }}"
     />
   </div>

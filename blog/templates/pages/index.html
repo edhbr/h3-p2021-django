@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block page_content %}
+{% extends 'base.html' %} {% load cloudinary %} {% block page_content %}
 <div class="home">
   <h1>{{ data.title }}</h1>
   <p>{{ data.punchline }}</p>
@@ -11,7 +11,7 @@
     >
       <div class="featured">
         <img
-          src="{{ data.featured_post.featured_image }}"
+          src="{% cloudinary_url data.featured_post.featured_image %}"
           alt="{{ data.featured_post.title }}"
         />
       </div>
@@ -36,7 +36,10 @@
       title="{{ post.title }}"
     >
       <div class="featured">
-        <img src="{{ post.featured_image }}" alt="{{ post.title }}" />
+        <img
+          src="{% cloudinary_url post.featured_image %}"
+          alt="{{ post.title }}"
+        />
       </div>
       <div class="info">
         <h4>{{ post.title }}</h4>
