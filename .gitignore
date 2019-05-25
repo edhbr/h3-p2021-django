@@ -1,9 +1,7 @@
 # Custom
 settings.ini
-staticfiles/dist/*
-staticfiles/admin/*
-staticfiles/html/*
-staticfiles/js/*
+
+staticfiles/*
 
 # Node
 node_modules
