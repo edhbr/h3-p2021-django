@@ -30,14 +30,10 @@ A Django discovery project
 
 > \$ pip install -r requirements.txt
 
-6. Get inside the Django project
+6. Run Django
 
-> \$ cd bauhausBlog
-
-7. Run Django
-
-   7.1. Development server
+   6.1. Development server
 
    > \$ python manage.py runserver
 
-8. Enjoy
+7. Enjoy

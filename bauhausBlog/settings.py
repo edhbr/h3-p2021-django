@@ -12,19 +12,30 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import django_heroku
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '2_f0a8smcmkn))n=k@!e(14hxiez_tk)dxi46=t80i7bklg6g1'
+# SECRET_KEY = '2_f0a8smcmkn))n=k@!e(14hxiez_tk)dxi46=t80i7bklg6g1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
+
+SECRET_KEY = config('SECRET_KEY')
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
 
 ALLOWED_HOSTS = ['h3-p2021-django.herokuapp.com']
 
@@ -54,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.gzip.GZipMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'bauhausBlog.urls'
@@ -125,7 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static', 'static_root')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 STATICFILES_DIRS = ()
 
@@ -136,19 +148,21 @@ STATICFILES_FINDERS = (
     'static_precompiler.finders.StaticPrecompilerFinder',
 )
 
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_PRECOMPILER_OUTPUT_DIR = 'dist'
 
-STATIC_PRECOMPILER_COMPILERS = (
-    (
-        'static_precompiler.compilers.Stylus',
-        {
-            "executable": "stylus", "sourcemap_enabled": True
-        }
-    ),
-)
+# STATIC_PRECOMPILER_COMPILERS = (
+#     (
+#         'static_precompiler.compilers.Stylus',
+#         {
+#             "executable": "stylus", "sourcemap_enabled": True
+#         }
+#     ),
+# )
 
 COMPRESS_ENABLED = True
 COMPRESS_OUTPUT_DIR = 'dist'

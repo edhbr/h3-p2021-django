@@ -1,1 +1,1 @@
-web: gunicorn bauhausBlog.wsgi --log-file -
+web: gunicorn bauhausBlog.wsgi

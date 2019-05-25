@@ -1,3 +1,10 @@
+# Custom
+settings.ini
+staticfiles/dist/*
+staticfiles/admin/*
+
+# Node
+node_modules
 
 # Created by https://www.gitignore.io/api/linux,macos,django,python,windows,pycharm,virtualenv,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=linux,macos,django,python,windows,pycharm,virtualenv,visualstudiocode
