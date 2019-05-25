@@ -157,15 +157,22 @@ STATICFILES_FINDERS = (
     'static_precompiler.finders.StaticPrecompilerFinder',
 )
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Whitenoise
+
 STATICFILES_STORAGE = 'whitenoise.storage.WhiteNoiseManifestStaticFilesStorage'
 
 WHITENOISE_ROOT = STATIC_ROOT
 WHITENOISE_USE_FINDERS = True
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Precompiler
 
 STATIC_PRECOMPILER_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_PRECOMPILER_FINDER_LIST_FILES = True
 STATIC_PRECOMPILER_OUTPUT_DIR = 'dist'
 
 STATIC_PRECOMPILER_COMPILERS = (
@@ -177,18 +184,29 @@ STATIC_PRECOMPILER_COMPILERS = (
     ),
 )
 
+
+# Compress
+
 COMPRESS_ENABLED = DEBUG
 COMPRESS_OUTPUT_DIR = 'dist'
 COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',
                         'compressor.filters.cssmin.CSSMinFilter']
 
+
 # Cloudinary
+
 cloudinary.config(
     cloud_name=config("CL_NAME"),
     api_key=config("CL_KEY"),
     api_secret=config("CL_SECRET")
 )
 
+
+# Debug
+
 DEBUG_PROPAGATE_EXCEPTIONS = True
+
+
+# Heroku
 
 django_heroku.settings(locals())
