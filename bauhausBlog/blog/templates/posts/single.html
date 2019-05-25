@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% load markdown_extras %} {% block page_content %}
+<div class="blog">
+  <div class="hero">
+    <a class="back" href="{% url 'blog:index' %}" title="Back to home">
+      <div class="cta">
+        &lt; Back to home
+      </div>
+    </a>
+    <img
+      class="featured"
+      src="{{ data.featured_image }}"
+      alt="{{ data.title }}"
+    />
+  </div>
+  <article>
+    <h1>{{ data.title }}</h1>
+    <small>- {{ data.published_date }}</small>
+    <p class="lead">
+      {{ data.lead }}
+    </p>
+    <div class="markdown">
+      {{ data.body | markdown | safe }}
+    </div>
+  </article>
+</div>
+{% endblock %}

@@ -1,6 +1,6 @@
 # h3-p2021-django
 
-A discovery Django project
+A Django discovery project
 
 ## Install
 

@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% block page_content %}
+<div class="home">
+  <h1>{{ data.title }}</h1>
+  <p>{{ data.punchline }}</p>
+  <div class="wrapper">
+    <h2>Featured article</h2>
+    <a
+      class="postCard"
+      href="{% url 'blog:blog_post' data.featured_post.slug %}"
+      title="{{ data.featured_post.title }}"
+    >
+      <div class="featured">
+        <img
+          src="{{ data.featured_post.featured_image }}"
+          alt="{{ data.featured_post.title }}"
+        />
+      </div>
+      <div class="info">
+        <h4>{{ data.featured_post.title }}</h4>
+        <small>- {{ data.featured_post.date }}</small>
+        <p>
+          {{ data.featured_post.lead }}
+        </p>
+        <div class="cta">
+          Read the article &gt;
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="wrapper">
+    <h2>All article</h2>
+    {% if data.blog_posts %} {% for post in data.blog_posts %}
+    <a
+      class="postCard"
+      href="{% url 'blog:blog_post' post.slug %}"
+      title="{{ post.title }}"
+    >
+      <div class="featured">
+        <img src="{{ post.featured_image }}" alt="{{ post.title }}" />
+      </div>
+      <div class="info">
+        <h4>{{ post.title }}</h4>
+        <small>- {{ post.date }}</small>
+        <p>
+          {{ post.lead }}
+        </p>
+        <div class="cta">
+          Read the article &gt;
+        </div>
+      </div>
+    </a>
+    {% endfor %} {% endif %}
+  </div>
+</div>
+{% endblock %}
