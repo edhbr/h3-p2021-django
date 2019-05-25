@@ -1,7 +1,9 @@
 # Custom
 settings.ini
-# static/*
-!static/.gitkeep
+staticfiles/dist/*
+staticfiles/admin/*
+staticfiles/html/*
+staticfiles/js/*
 
 # Node
 node_modules
