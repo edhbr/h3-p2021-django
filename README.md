@@ -2,6 +2,8 @@
 
 A Django discovery project
 
+Live project [here](https://h3-p2021-django.herokuapp.com/)
+
 ## Install
 
 1. Clone the repository
@@ -16,7 +18,7 @@ A Django discovery project
 
    > \$ virtualenv . -p python
 
-4. Get inside
+4. Get inside virtualenv
 
    4.1 Windows
 
@@ -30,10 +32,18 @@ A Django discovery project
 
 > \$ pip install -r requirements.txt
 
-6. Run Django
+6. Rename settings.sample.ini
 
-   6.1. Development server
+> \$ mv settings.sample.ini settings.ini
+
+7. Fill it with your value
+
+> \$ vim settings.ini
+
+8. Run Django
+
+   8.1. Development server
 
    > \$ python manage.py runserver
 
-7. Enjoy
+9. Enjoy
