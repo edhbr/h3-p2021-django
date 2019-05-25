@@ -188,7 +188,7 @@ STATIC_PRECOMPILER_COMPILERS = (
 # Compress
 
 COMPRESS_ENABLED = DEBUG
-COMPRESS_OUTPUT_DIR = 'dist'
+COMPRESS_OUTPUT_DIR = 'comp'
 COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',
                         'compressor.filters.cssmin.CSSMinFilter']
 
