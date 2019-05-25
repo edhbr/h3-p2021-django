@@ -173,7 +173,7 @@ WHITENOISE_USE_FINDERS = True
 
 STATIC_PRECOMPILER_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_PRECOMPILER_FINDER_LIST_FILES = True
-STATIC_PRECOMPILER_OUTPUT_DIR = 'dist'
+STATIC_PRECOMPILER_OUTPUT_DIR = 'comp'
 
 STATIC_PRECOMPILER_COMPILERS = (
     (
@@ -188,7 +188,7 @@ STATIC_PRECOMPILER_COMPILERS = (
 # Compress
 
 COMPRESS_ENABLED = DEBUG
-COMPRESS_OUTPUT_DIR = 'comp'
+COMPRESS_OUTPUT_DIR = 'dist'
 COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',
                         'compressor.filters.cssmin.CSSMinFilter']
 
