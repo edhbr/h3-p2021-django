@@ -38,7 +38,11 @@ DATABASES = {
     )
 }
 
-ALLOWED_HOSTS = ['h3-p2021-django.herokuapp.com']
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+    '127.0.0.1',
+    'h3-p2021-django.herokuapp.com'
+]
 
 
 # Application definition
@@ -139,9 +143,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
-STATICFILES_DIRS = ()
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static-common'),
+]
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -150,7 +156,7 @@ STATICFILES_FINDERS = (
     'static_precompiler.finders.StaticPrecompilerFinder',
 )
 
-# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -166,7 +172,7 @@ STATIC_PRECOMPILER_COMPILERS = (
     ),
 )
 
-COMPRESS_ENABLED = True
+COMPRESS_ENABLED = DEBUG
 COMPRESS_OUTPUT_DIR = 'dist'
 COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',
                         'compressor.filters.cssmin.CSSMinFilter']
@@ -179,3 +185,5 @@ cloudinary.config(
     api_key=config("CL_KEY"),
     api_secret=config("CL_SECRET")
 )
+
+DEBUG_PROPAGATE_EXCEPTIONS = True
