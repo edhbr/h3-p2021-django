@@ -2,7 +2,7 @@
 
 A Django discovery project
 
-Live project [here](https://h3-p2021-django.herokuapp.com/)
+**[Live project here](https://h3-p2021-django.herokuapp.com)**
 
 ## Install
 
