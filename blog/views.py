@@ -6,7 +6,7 @@ from .models import Post, Page
 
 
 def index(request):
-    home = Page.objects.get(path="/")
+    home = get_object_or_404(Page, path="/")
     blog_posts = Post.objects.order_by("-published_date")
 
     home.blog_posts = blog_posts
