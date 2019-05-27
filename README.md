@@ -46,7 +46,7 @@ A Django discovery project
 
 `$ mv settings.sample.ini settings.ini`
 
-7. Fill it with your value (ignore `DATABASE_URL` key)
+7. Fill it with your value
 
 `$ vim settings.ini`
 
@@ -63,3 +63,21 @@ A Django discovery project
 `$ python manage.py runserver`
 
 11. Enjoy
+
+## Features
+
+It's a basic blog featuring :
+
+- A home page
+
+  - Featured article
+  - Title
+  - Punchline
+  - Posts list
+
+- Single post page
+  - Title
+  - Lead
+  - Published date
+  - Featured image (hosted on Cloudinary)
+  - Markdown body
