@@ -18,7 +18,7 @@ A Django discovery project
 
 1. Clone the repository
 
-   `$ git clone git@github.com:edhbr/h3-p2021-django.git`
+   `$ git clone <repo>`
 
 2. Get inside
 
